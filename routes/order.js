@@ -5,10 +5,10 @@ var mysql = require('mysql');
 
 function getConnection() {
   return mysql.createConnection({
-    host: 'ecomsite-rds.clpcnl2zsquk.us-east-1.rds.amazonaws.com',
-    user: 'ecomsiteabdullah', 
-    password: 'setsuna00',
-    database: 'ecomsite'
+    host: process.env.RDS_HOSTNAME,
+    user: process.env.RDS_USERNAME, 
+    password: process.env.RDS_PASSWORD,
+    port: process.env.RDS_PORT
   });
 }
 
