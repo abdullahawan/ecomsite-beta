@@ -8,25 +8,9 @@ function getConnection() {
     host     : 'ecomsite-rds.clpcnl2zsquk.us-east-1.rds.amazonaws.com',
     user     : 'ecomsiteabdullah',
     password : 'setsuna00',
-    database: 'ecomsite', 
-    port     : 3306
+    database: 'ecomsite'
   });
-}
-
-connection = getConnection(); 
-const createDatabaseStatement =  `CREATE TABLE if not exists orderNum (
-  id int primary key auto_increment, 
-  firstname varchar(255) not null,
-  lastname varchar(255),
-  email varchar(255) not null, 
-  product varchar(255) not null,
-  paymentType varchar(255) not null
-)`;
-connection.query(createDatabaseStatement, function(err, results, fields) {
-  if (err) {
-    console.log(err.message);
-  }
-});
+};
 
 router.get('/', (req, res) => {
   console.log('getting orders...'); 

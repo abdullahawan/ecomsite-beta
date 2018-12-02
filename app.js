@@ -12,10 +12,9 @@ function getConnection() {
     host     : 'ecomsite-rds.clpcnl2zsquk.us-east-1.rds.amazonaws.com',
     user     : 'ecomsiteabdullah',
     password : 'setsuna00',
-    database: 'ecomsite', 
-    port     : 3306
+    database: 'ecomsite'
   });
-}
+};
 
 connection = getConnection(); 
 const createDatabaseStatement =  `CREATE TABLE if not exists orderNum (
