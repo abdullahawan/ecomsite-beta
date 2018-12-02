@@ -9,10 +9,10 @@ var mysql = require('mysql');
 
 function getConnection() {
   return mysql.createConnection({
-    host     : process.env.RDS_HOSTNAME,
-    user     : process.env.RDS_USERNAME,
-    password : process.env.RDS_PASSWORD,
-    port     : process.env.RDS_PORT
+    host     : 'ecomsite-rds.clpcnl2zsquk.us-east-1.rds.amazonaws.com',
+    user     : 'ecomsiteabdullah',
+    password : 'setsuna00',
+    port     : 3306
   });
 }
 
@@ -23,7 +23,7 @@ const createDatabaseStatement =  `CREATE TABLE if not exists orderNum (
   lastname varchar(255),
   email varchar(255) not null, 
   product varchar(255) not null,
-  paymentType varchar(255) 
+  paymentType varchar(255) not null
 )`;
 
 connection.query(createDatabaseStatement, function(err, results, fields) {
