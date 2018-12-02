@@ -12,6 +12,21 @@ function getConnection() {
   });
 }
 
+connection = getConnection(); 
+const createDatabaseStatement =  `CREATE TABLE if not exists orderNum (
+  id int primary key auto_increment, 
+  firstname varchar(255) not null,
+  lastname varchar(255),
+  email varchar(255) not null, 
+  product varchar(255) not null,
+  paymentType varchar(255) 
+)`;
+connection.query(createDatabaseStatement, function(err, results, fields) {
+  if (err) {
+    console.log(err.message);
+  }
+});
+
 router.get('/', (req, res) => {
   console.log('getting orders...'); 
   res.render('order',  {
