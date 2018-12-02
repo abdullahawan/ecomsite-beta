@@ -1,0 +1,39 @@
+{{> header}}
+
+<fieldset> 
+    <form action="/order" method="POST">
+        First Name: <br> 
+        <input type="text" name="firstname" required> <br>
+        Last Name: <br> 
+        <input type="text" name="lastname" required> <br> 
+        Email: <br>
+        <input type="email" name="email" required> <br>
+        Each product is $100, you may only choose 1. 
+        <br>
+        <select name="buyproducts" id="buyproducts" onchange="getSelectValueProducts" required>
+            <option value="bike">bike</option>
+            <option value="car">car</option>
+        </select>
+        <br>
+        Payment type: 
+        <br>
+        <select name="paymentType" id="paymentType" onchange="getSelectValuePayments" required>
+            <option value="visa">visa</option>
+            <option value="mastercard">master card</option>
+        </select> 
+        <br>
+        <button type="submit">Submit Order</button>
+    </form>
+</fieldset>
+
+<script>
+    function getSelectValueProducts() {
+        var selectedValue = document.getElementById("buyproducts").value;
+        console.log(selectedValue); 
+    }
+
+      function getSelectValuePayments() {
+        var selectedValue = document.getElementById("paymentType").value;
+        console.log(selectedValue); 
+    }
+</script>
