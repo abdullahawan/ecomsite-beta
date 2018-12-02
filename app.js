@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var hbs = require('hbs');
 var mysql = require('mysql'); 
 
+
 function getConnection() {
   return mysql.createConnection({
     host     : 'ecomsite-rds.clpcnl2zsquk.us-east-1.rds.amazonaws.com',
@@ -68,5 +69,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
