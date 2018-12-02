@@ -5,6 +5,32 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser'); 
 var hbs = require('hbs');
+var mysql = require('mysql'); 
+
+function getConnection() {
+  return mysql.createConnection({
+    host: process.env.RDS_HOSTNAME,
+    user: process.env.RDS_USERNAME, 
+    password: process.env.RDS_PASSWORD,
+    port: process.env.RDS_PORT
+  });
+}
+
+connection = getConnection(); 
+const createDatabaseStatement =  `CREATE TABLE if not exists orderNum (
+  id int primary key auto_increment, 
+  firstname varchar(255) not null,
+  lastname varchar(255),
+  email varchar(255) not null, 
+  product varchar(255) not null,
+  paymentType varchar(255) 
+)`;
+
+connection.query(createDatabaseStatement, function(err, results, fields) {
+  if (err) {
+    console.log(err.message);
+  }
+});
 
 hbs.registerPartials(path.join(__dirname, './views/partials')); 
 
